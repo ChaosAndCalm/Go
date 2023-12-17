@@ -1,18 +1,29 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
+	"strings"
 )
 
 func main(){
-	s := "ēlite"
-	fmt.Printf("%8T %[1]v\n",s)
+	
+	if len(os.Args) < 3 {
+		fmt.Fprintf(os.Stderr,"not enough args\n")
+		os.Exit(-1)
+	}
 
-	fmt.Printf("%8T %[1]v\n", []rune(s))
-	fmt.Printf("%8T %[1]v\n", []byte(s))
+	old,new := os.Args[1], os.Args[2]
 
-	var str string = "Hello, World!"
+	scan := bufio.NewScanner(os.Stdin)
 
-	str += "World!"
-	fmt.Printf("%d\n",len(str))
+	for scan.Scan() {
+		s := strings.Split(scan.Text(),old)
+		t := strings.Join(s,new)
+
+		fmt.Println(t)
+
+	}
+
 }
