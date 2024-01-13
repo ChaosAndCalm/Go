@@ -38,7 +38,7 @@ func ScaleRecipe(slice []float64, people int) []float64 {
 
 	var sliceNew []float64
 	for i := 0; i < len(slice); i++ {
-		sliceNew = append(sliceNew, slice[i]*(float64)(people/2))
+		sliceNew = append(sliceNew, slice[i]*(float64(people)/float64(2)))
 	}
 
 	return sliceNew
@@ -52,4 +52,3 @@ func ScaleRecipe(slice []float64, people int) []float64 {
 // You can then implement the function logic one by one and see
 // an increasing number of tests passing as you implement more
 // functionality.
-
